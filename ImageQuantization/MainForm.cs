@@ -18,27 +18,28 @@ namespace ImageQuantization
 
         RGBPixel[,] ImageMatrix;
 
-        public List<RGBPixel> getColors() {
-            List<RGBPixel> l = new List<RGBPixel>();
-            List<RGBPixel> tmp = new List<RGBPixel>();
-            int width = ImageOperations.GetWidth(ImageMatrix);
-            int height = ImageOperations.GetHeight(ImageMatrix);
-            for (int i = 0; i < height; i++)
+        public List<RGBPixel> distinct_Colors()
+        {
+            int Dcolors_width = ImageOperations.GetWidth(ImageMatrix);
+            int Dcolors_height = ImageOperations.GetHeight(ImageMatrix);
+            HashSet<RGBPixel> Distinct = new HashSet<RGBPixel>();
+            for (int i = 0; i < Dcolors_height; i++)
             {
-                for (int y = 0; y < width; y++)
+                for (int j = 0; j < Dcolors_width; j++)
                 {
-                    bool ok = true;
-                    for (int j=0; j<tmp.Count; j++) {
-                        if (tmp[j].blue == ImageMatrix[i, y].blue && tmp[j].red == ImageMatrix[i, y].red && tmp[j].green == ImageMatrix[i, y].green) {
-                            ok = false; break;
-                        }
-                    }
-                    if (ok) l.Add(ImageMatrix[i, y]);
-                    tmp.Add(ImageMatrix[i, y]);
+                    Distinct.Add(ImageMatrix[i, j]);
                 }
             }
-            return l;
+
+            List<RGBPixel> Distinctcolors = new List<RGBPixel>();
+            foreach (RGBPixel color in Distinct)
+            {
+                Distinctcolors.Add(color);
+            }
+
+            return Distinctcolors;
         }
+        
         private void btnOpen_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -51,7 +52,7 @@ namespace ImageQuantization
             }
             txtWidth.Text = ImageOperations.GetWidth(ImageMatrix).ToString();
             txtHeight.Text = ImageOperations.GetHeight(ImageMatrix).ToString();
-            List<RGBPixel> l = getColors();
+            List<RGBPixel> l = distinct_Colors();
             txtWidth.Text = l.Count.ToString();
         }
 
