@@ -243,46 +243,6 @@ namespace ImageQuantization
 
             return Filtered;
         }
-
-        public long Power(long Base, long power)
-        {
-            if (power == 1) return Base;
-            if (power == 0) return 1;
-            long res = Power(Base, power / 2);
-            if (power % 2 == 1) return Base * res * res;
-            return res * res;
-        }
-
-        static double Square(double n)
-        {
-            double mid = 0, mul = n + 1, i = 0, j = n;
-
-            while (true)
-            {
-                mid = (i + j) / 2;
-                mul = mid * mid;
-                if ((mul == n) || (Math.Abs(mul - n) < 0.000001))
-                {
-                    int temp = (int)mid;
-                    if (temp * temp == n) return temp;
-                    return mid;
-                }
-                else if (mul < n)
-                    i = mid;
-                else
-                    j = mid;
-            }
-        }
-
-        static long power(long B, long P)
-        {
-            if (P == 1) return B;
-            if (P == 0) return 1;
-            long res = power(B, P / 2);
-            if (P % 2 == 1) return B * res * res;
-            return res * res;
-        }
-
     }
     
 }

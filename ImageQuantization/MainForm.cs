@@ -10,36 +10,12 @@ namespace ImageQuantization
 {
     public partial class MainForm : Form
     {
-        string path;
         public MainForm()
         {
             InitializeComponent();
         }
-
         RGBPixel[,] ImageMatrix;
 
-        public List<RGBPixel> distinct_Colors()
-        {
-            int Dcolors_width = ImageOperations.GetWidth(ImageMatrix);
-            int Dcolors_height = ImageOperations.GetHeight(ImageMatrix);
-            HashSet<RGBPixel> Distinct = new HashSet<RGBPixel>();
-            for (int i = 0; i < Dcolors_height; i++)
-            {
-                for (int j = 0; j < Dcolors_width; j++)
-                {
-                    Distinct.Add(ImageMatrix[i, j]);
-                }
-            }
-
-            List<RGBPixel> Distinctcolors = new List<RGBPixel>();
-            foreach (RGBPixel color in Distinct)
-            {
-                Distinctcolors.Add(color);
-            }
-
-            return Distinctcolors;
-        }
-        
         private void btnOpen_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -52,8 +28,6 @@ namespace ImageQuantization
             }
             txtWidth.Text = ImageOperations.GetWidth(ImageMatrix).ToString();
             txtHeight.Text = ImageOperations.GetHeight(ImageMatrix).ToString();
-            List<RGBPixel> l = distinct_Colors();
-            txtWidth.Text = l.Count.ToString();
         }
 
         private void btnGaussSmooth_Click(object sender, EventArgs e)
