@@ -14,8 +14,22 @@ namespace ImageQuantization
         {
             InitializeComponent();
         }
-        RGBPixel[,] ImageMatrix;
+        static RGBPixel[,] ImageMatrix;
+        MST mst;
+        buildGraph buildgraph;
 
+        public void start()
+        {
+            mst = new MST();
+            buildgraph = new buildGraph(ImageMatrix);
+            List<RGBPixel> colors = buildgraph.distinct_Colors();
+            double[,] Matrix = new double[colors.Count, colors.Count];
+            buildgraph.generatePaths(colors, ref Matrix);
+            double[,] resMatrix = new double[colors.Count, colors.Count];
+            double sum = mst.ComputeMSTPath(Matrix, colors.Count, ref resMatrix);
+            txtWidth.Text = colors.Count.ToString();
+            txtHeight.Text = sum.ToString();
+        }
         private void btnOpen_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -28,6 +42,7 @@ namespace ImageQuantization
             }
             txtWidth.Text = ImageOperations.GetWidth(ImageMatrix).ToString();
             txtHeight.Text = ImageOperations.GetHeight(ImageMatrix).ToString();
+            start();
         }
 
         private void btnGaussSmooth_Click(object sender, EventArgs e)
