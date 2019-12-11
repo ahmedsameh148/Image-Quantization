@@ -17,10 +17,10 @@ namespace ImageQuantization
 
         
         //takes  O(E logV)
-        public double ComputeMSTPath(double[,] matrix, int length, ref double[,] resGraph)
+        public double ComputeMSTPath(double[,] matrix, int length, ref double[,] resGraph,ref List<KeyValuePair<KeyValuePair<int, int>, double>> res)
         {
            
-            List<KeyValuePair<KeyValuePair<int, int>, double>> res = new List<KeyValuePair<KeyValuePair<int, int>, double>>();
+             res = new List<KeyValuePair<KeyValuePair<int, int>, double>>();
             List<KeyValuePair<KeyValuePair<int, int>, double>> edges = new List<KeyValuePair<KeyValuePair<int, int>, double>>();
            // O(lenght^2)
             for (int i = 0; i < length; i++)

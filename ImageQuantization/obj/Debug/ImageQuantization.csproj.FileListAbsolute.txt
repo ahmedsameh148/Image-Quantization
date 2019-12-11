@@ -30,3 +30,12 @@ C:\Users\ahmed_000\Desktop\Image Quantization Startup Code\[TEMPLATE] ImageQuant
 C:\Users\ahmed_000\Desktop\Image Quantization Startup Code\[TEMPLATE] ImageQuantization\ImageQuantization\obj\Debug\ImageQuantization.MainForm.resources
 C:\Users\ahmed_000\Desktop\Image Quantization Startup Code\[TEMPLATE] ImageQuantization\ImageQuantization\obj\Debug\ImageQuantization.Properties.Resources.resources
 C:\Users\ahmed_000\Desktop\Image Quantization Startup Code\[TEMPLATE] ImageQuantization\ImageQuantization\obj\Debug\ImageQuantization.csproj.GenerateResource.Cache
+C:\Users\TASNEEM\Desktop\test_cluster_algo\ImageQuantization\bin\Debug\ImageQuantization.exe
+C:\Users\TASNEEM\Desktop\test_cluster_algo\ImageQuantization\bin\Debug\ImageQuantization.pdb
+C:\Users\TASNEEM\Desktop\test_cluster_algo\ImageQuantization\obj\Debug\ImageQuantization.csprojAssemblyReference.cache
+C:\Users\TASNEEM\Desktop\test_cluster_algo\ImageQuantization\obj\Debug\ImageQuantization.MainForm.resources
+C:\Users\TASNEEM\Desktop\test_cluster_algo\ImageQuantization\obj\Debug\ImageQuantization.Properties.Resources.resources
+C:\Users\TASNEEM\Desktop\test_cluster_algo\ImageQuantization\obj\Debug\ImageQuantization.csproj.GenerateResource.cache
+C:\Users\TASNEEM\Desktop\test_cluster_algo\ImageQuantization\obj\Debug\ImageQuantization.csproj.CoreCompileInputs.cache
+C:\Users\TASNEEM\Desktop\test_cluster_algo\ImageQuantization\obj\Debug\ImageQuantization.exe
+C:\Users\TASNEEM\Desktop\test_cluster_algo\ImageQuantization\obj\Debug\ImageQuantization.pdb

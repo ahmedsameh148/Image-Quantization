@@ -34,6 +34,7 @@ namespace ImageQuantization
             return Distinctcolors;
         }
 
+        
         public double Square(double n)
         {
             double mid = 0, mul = n + 1, i = 0, j = n;
@@ -55,25 +56,49 @@ namespace ImageQuantization
             }
         }
 
+        /// <summary>
+        /// calculate power number
+        /// </summary>
+        /// <param name="Base">number</param>
+        /// <param name="power">times multiply the number by itself </param>
+        /// <returns> long number</returns>
+        /// take theta (n/2)
         public long Power(long Base, long power)
         {
-            if (power == 1) return Base;
-            if (power == 0) return 1;
-            long res = Power(Base, power / 2);
-            if (power % 2 == 1) return Base * res * res;
+            if (power == 1) return Base;//theta(1) 
+            if (power == 0) return 1;// theta(1)
+            long res = Power(Base, power / 2); //theta(n/2)
+            if (power % 2 == 1) return Base * res * res;// theta(1)
             return res * res;
         }
 
+
+        /// <summary>
+        ///  calculate distance between 2 color
+        /// </summary>
+        /// <param name="color1">color have 3 byte values: red, green and blue</param>
+        /// <param name="color2">color have 3 byte values: red, green and blue</param>
+        /// 
         public double calculateDistance(RGBPixel color1, RGBPixel color2) {
             return Square(Power(Math.Abs(color1.red - color2.red), 2) + Power(Math.Abs(color1.green - color2.green), 2) + Power(color1.blue - color2.blue, 2));
         }
 
+
+
+        /// <summary>
+        /// creat matrix graph and calculate distance
+        /// </summary>
+        /// <param name="colors">list distinct_Colors</param>
+        /// <param name="ImagePath">Image file path</param>
+        
         public void generatePaths(List<RGBPixel> Colors, ref double[,] Matrix)
         {
+            // take O(D^2)
             for (int i = 0; i < Colors.Count; i++)
             {
                 for (int y = i; y < Colors.Count; y++)
                 {
+                    // O(1)
                     Matrix[i, y] = calculateDistance(Colors[i], Colors[y]);
                     Matrix[y, i] = calculateDistance(Colors[i], Colors[y]);
                 }
@@ -81,52 +106,7 @@ namespace ImageQuantization
         }
 
 
-        /*public static double[,] calculate_distance(RGBPixel[,] ImageMatrix)
-        {
-
-            List<RGBPixel> l = new List<RGBPixel>();
-            l = getColors(ImageMatrix);
-            double res;
-            List<info_edge> graph[] = new List<info_edge>();
-            // double[,] graph = new double[l.Count, l.Count];
-
-            /* for (int i=0;i<l.Count;i++)
-             {
-                 for (int j=0;j<l.Count;j++)
-                 {
-                     if (i == j) graph[i, j] = 0;
-                     if (j>i)
-                     {
-                         res = power(l[i].red - l[j].red, 2) + power(l[i].green - l[j].green, 2) + power(l[i].blue - l[j].blue, 2);
-                         res = Square(res);
-                         graph[i, j] = res;
-                         graph[j, i] = res;
-                     }
-                 }
-
-             }
-             return graph;
-            info_edge e = new info_edge();
-
-            for (int i = 0; i < l.Count; i++)
-            {
-                e.start = e.end = l[i];
-                e.value = 0;
-                graph.Add(e);
-                for (int j = i + 1; j < l.Count; j++)
-                {
-                    e.value = power(l[i].red - l[j].red, 2) + power(l[i].green - l[j].green, 2) + power(l[i].blue - l[j].blue, 2);
-                    e.value = Square(e.value);
-                    e.start = l[i];
-                    e.end = l[j];
-                    graph.Add(e);
-                    e.start = l[j];
-                    e.end = l[i];
-                }
-            }
-
-
-        }*/
+        
 
     }
 }
