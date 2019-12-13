@@ -20,13 +20,16 @@ namespace ImageQuantization
 
         public void start()
         {
-            mst = new MST();
+            mst = new MST(); 
             buildgraph = new buildGraph(ImageMatrix);
             List<RGBPixel> colors = buildgraph.distinct_Colors();
-            double[,] Matrix = new double[colors.Count, colors.Count];
+            /*double[,] Matrix = new double[colors.Count, colors.Count];
             buildgraph.generatePaths(colors, ref Matrix);
             double[,] resMatrix = new double[colors.Count, colors.Count];
-            double sum = mst.ComputeMSTPath(Matrix, colors.Count, ref resMatrix);
+            double sum = mst.ComputeMSTPath(Matrix, colors.Count, ref resMatrix);*/
+            Prim prim = new Prim();
+            List<KeyValuePair<KeyValuePair<int, int>, double>> edges = new List<KeyValuePair<KeyValuePair<int, int>, double>>();
+            double sum = prim.getMst(0, ref edges, colors.Count, colors);
             txtWidth.Text = colors.Count.ToString();
             txtHeight.Text = sum.ToString();
         }
