@@ -4,35 +4,12 @@ using System.Text;
 
 namespace ImageQuantization
 {
-    public class PriorityQueueItem : IComparable<PriorityQueueItem>
-    {
-        public double Key = new double();
-        public int Value = new int();
-
-        public PriorityQueueItem(double key, int value)
-        {
-            Key = key;
-            Value = value;
-        }
-        public int CompareTo(PriorityQueueItem other)
-        {
-            int ret = -1;
-            if (Key < other.Key)
-                ret = -1;
-            else if (Key > other.Key)
-                ret = 1;
-            else if (Key == other.Key)
-                ret = 0;
-            return ret;
-        }
-    }
     /// <summary>
     /// Priority Queue data structure
     /// </summary>
     public class PriorityQueue<T>
         where T : PriorityQueueItem
     {
-        
         protected List<T> storedValues;
 
         public PriorityQueue()

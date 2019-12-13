@@ -15,22 +15,22 @@ namespace ImageQuantization
             InitializeComponent();
         }
         static RGBPixel[,] ImageMatrix;
-        MST mst;
-        buildGraph buildgraph;
+        Distictit_Colors getDistincitColors;
 
         public void start()
         {
-            mst = new MST(); 
-            buildgraph = new buildGraph(ImageMatrix);
-            List<RGBPixel> colors = buildgraph.distinct_Colors();
-            /*double[,] Matrix = new double[colors.Count, colors.Count];
-            buildgraph.generatePaths(colors, ref Matrix);
-            double[,] resMatrix = new double[colors.Count, colors.Count];
-            double sum = mst.ComputeMSTPath(Matrix, colors.Count, ref resMatrix);*/
+            getDistincitColors = new Distictit_Colors(ImageMatrix);
+            //Get The Distincit Colors
+            List<RGBPixel> colors = getDistincitColors.getDistincitColors();
+            //An Object To Calculate The Minimum Spanning Tree
             Prim prim = new Prim();
+            //List To Save The Edges The Resulting Minimum Spanning Tree
             List<KeyValuePair<KeyValuePair<int, int>, double>> edges = new List<KeyValuePair<KeyValuePair<int, int>, double>>();
+            //The Total Sum Of The MST
             double sum = prim.getMst(0, ref edges, colors.Count, colors);
+            //Display The # Distinct Colors In The Width's Text Box
             txtWidth.Text = colors.Count.ToString();
+            //Display The Sum Of The MST In The Height's Text Box
             txtHeight.Text = sum.ToString();
         }
         private void btnOpen_Click(object sender, EventArgs e)
