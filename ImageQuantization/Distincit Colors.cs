@@ -20,9 +20,10 @@ namespace ImageQuantization
             //Get The Height Of The Image
             int Dcolors_height = ImageOperations.GetHeight(ImageMatrix);
             //Array To Check The Repeatition Of Colors
-            bool[] check = new bool[20000000];
+            int[] check = new int[20000000];
             //List To Save The Distincit Colors
             List<RGBPixel> Distinctcolors = new List<RGBPixel>();
+            Distinctcolors.Add(new RGBPixel());
             //Looping Over All Pixels
             for (int i = 0; i < Dcolors_height; i++)
             {
@@ -33,9 +34,9 @@ namespace ImageQuantization
                     res = (res << 8) + ImageMatrix[i, j].green;
                     res = (res << 8) + ImageMatrix[i, j].blue;
                     //Check If The Pixel Taken Befor
-                    if (check[res]) continue;
+                    if (check[res] != 0) continue;
                     //Mark The Pixel As Taken
-                    check[res] = true;
+                    check[res] = Distinctcolors.Count;
                     //Add The Pixel as A Distinct Color
                     Distinctcolors.Add(ImageMatrix[i, j]);
                 }

@@ -27,9 +27,9 @@ namespace ImageQuantization
             //List To Save The Edges The Resulting Minimum Spanning Tree
             List<KeyValuePair<KeyValuePair<int, int>, double>> edges = new List<KeyValuePair<KeyValuePair<int, int>, double>>();
             //The Total Sum Of The MST
-            double sum = prim.getMst(0, ref edges, colors.Count, colors);
+            double sum = prim.getMst(ref edges, colors.Count, colors);
             //Display The # Distinct Colors In The Width's Text Box
-            txtWidth.Text = colors.Count.ToString();
+            txtWidth.Text = (colors.Count - 1).ToString();
             //Display The Sum Of The MST In The Height's Text Box
             txtHeight.Text = sum.ToString();
         }

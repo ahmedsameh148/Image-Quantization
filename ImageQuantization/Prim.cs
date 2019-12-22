@@ -24,7 +24,7 @@ namespace ImageQuantization
         }
 
         //Calculate The Minimum Spanning Tree 
-        public double getMst(int x, ref List<KeyValuePair<KeyValuePair<int, int>, double>> edges, int D, List<RGBPixel> Colors)
+        public double getMst(ref List<KeyValuePair<KeyValuePair<int, int>, double>> edges, int D, List<RGBPixel> Colors)
         {
             //Priority Queue To Get The Minimum Distance Between Any 2 Nodes
             PriorityQueue<PriorityQueueItem> Q = new PriorityQueue<PriorityQueueItem>();
@@ -37,41 +37,40 @@ namespace ImageQuantization
             //Initialize The Weight Of Each Node With 10^9
             for (int i = 1; i <= D; i++) { weights[i] = 1000000000; }
             //Push The Start Node In The Priority Queue
-            Q.Enqueue(new PriorityQueueItem(0, x));
+            int cur = 1;
+            double mn;
             //Array To Know The Visited Nodes
             bool[] marked = new bool[D + 1];
-
-            while (Q.Count > 0)
+            weights[1] = 0;
+            while (true)
             {
-                // Select the edge with minimum weight
-                PriorityQueueItem cur = Q.Dequeue();
-                // Checking for cycle
-                if (marked[cur.Value] == true)
-                    continue;
-                //Adding The Weight Of  The Edge To The Total Weight Of Th MST
-                minimumCost += cur.Key;
-                //Mark The Vertix As Visited
-                marked[cur.Value] = true;
-                //Adding The Edge To The Resulting Tree
-                edges.Add(new KeyValuePair<KeyValuePair<int, int>, double>(new KeyValuePair<int, int>(parent[cur.Value], cur.Value), weights[cur.Value]));
-                //Looping Among All Childs Of The Current Vertix
-                for (int i = 0; i < D; ++i)
+                marked[cur] = true;
+                mn = 1000000000;
+                int child = 0;
+                minimumCost += weights[cur];
+                for (int i = 1; i < D; ++i)
                 {
                     //If added will cause cycle
                     if (marked[i] == false)
                     {
                         //Calculate The Weight On The Edge Between The Current Vertix And His Child
-                        double weight = calculateDistance(Colors[cur.Value], Colors[i]);
+                        double weight = calculateDistance(Colors[cur], Colors[i]);
                         //Check If I Pushed The Same Vertix With A Smaller Cost
                         if (weights[i] > weight)
                         {
                             //Updating The Weight Of The Vertix
-                            weights[i] = weight; parent[i] = cur.Value;
+                            weights[i] = weight; parent[i] = cur;
                             //Adding The Vertix To The Queue
-                            Q.Enqueue(new PriorityQueueItem(weight, i));
+                        }
+                        if (weights[i] < mn)
+                        {
+                            mn = weights[i];
+                            child = i;
                         }
                     }
                 }
+                if (child == 0) break;
+                cur = child;
             }
             //Return The Total Weight Of The MST
             return minimumCost;
