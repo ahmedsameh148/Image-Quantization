@@ -1,0 +1,4 @@
+C:\Users\ahmed_000\Desktop\Image\ImageQuantization\obj\Release\ImageQuantization.csprojResolveAssemblyReference.cache
+C:\Users\ahmed_000\Desktop\Image\ImageQuantization\obj\Release\ImageQuantization.MainForm.resources
+C:\Users\ahmed_000\Desktop\Image\ImageQuantization\obj\Release\ImageQuantization.Properties.Resources.resources
+C:\Users\ahmed_000\Desktop\Image\ImageQuantization\obj\Release\ImageQuantization.csproj.GenerateResource.Cache

@@ -30,3 +30,11 @@ C:\Users\ahmed_000\Desktop\Image Quantization Startup Code\[TEMPLATE] ImageQuant
 C:\Users\ahmed_000\Desktop\Image Quantization Startup Code\[TEMPLATE] ImageQuantization\ImageQuantization\obj\Debug\ImageQuantization.MainForm.resources
 C:\Users\ahmed_000\Desktop\Image Quantization Startup Code\[TEMPLATE] ImageQuantization\ImageQuantization\obj\Debug\ImageQuantization.Properties.Resources.resources
 C:\Users\ahmed_000\Desktop\Image Quantization Startup Code\[TEMPLATE] ImageQuantization\ImageQuantization\obj\Debug\ImageQuantization.csproj.GenerateResource.Cache
+C:\Users\ahmed_000\Desktop\Image\ImageQuantization\obj\Debug\ImageQuantization.exe
+C:\Users\ahmed_000\Desktop\Image\ImageQuantization\obj\Debug\ImageQuantization.pdb
+C:\Users\ahmed_000\Desktop\Image\ImageQuantization\bin\Debug\ImageQuantization.exe
+C:\Users\ahmed_000\Desktop\Image\ImageQuantization\bin\Debug\ImageQuantization.pdb
+C:\Users\ahmed_000\Desktop\Image\ImageQuantization\obj\Debug\ImageQuantization.csprojResolveAssemblyReference.cache
+C:\Users\ahmed_000\Desktop\Image\ImageQuantization\obj\Debug\ImageQuantization.MainForm.resources
+C:\Users\ahmed_000\Desktop\Image\ImageQuantization\obj\Debug\ImageQuantization.Properties.Resources.resources
+C:\Users\ahmed_000\Desktop\Image\ImageQuantization\obj\Debug\ImageQuantization.csproj.GenerateResource.Cache

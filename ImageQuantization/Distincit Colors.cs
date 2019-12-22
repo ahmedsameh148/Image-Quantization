@@ -8,6 +8,8 @@ namespace ImageQuantization
     class Distictit_Colors
     {
         private RGBPixel[,] ImageMatrix;
+        //Array To Check The Repeatition Of Colors
+        public static int[] check;
         public Distictit_Colors(RGBPixel[,] Image)
         {
             ImageMatrix = Image;
@@ -15,12 +17,12 @@ namespace ImageQuantization
         //Function To Get The Distincit Color From 2d Matrix
         public List<RGBPixel> getDistincitColors()
         {
+            check = new int[20000000];
             //Get The Width Of The Image
             int Dcolors_width = ImageOperations.GetWidth(ImageMatrix);
             //Get The Height Of The Image
             int Dcolors_height = ImageOperations.GetHeight(ImageMatrix);
-            //Array To Check The Repeatition Of Colors
-            int[] check = new int[20000000];
+            
             //List To Save The Distincit Colors
             List<RGBPixel> Distinctcolors = new List<RGBPixel>();
             Distinctcolors.Add(new RGBPixel());

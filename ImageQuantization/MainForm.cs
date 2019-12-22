@@ -16,18 +16,20 @@ namespace ImageQuantization
         }
         static RGBPixel[,] ImageMatrix;
         Distictit_Colors getDistincitColors;
-
+        List<RGBPixel> colors;
+        List<KeyValuePair<KeyValuePair<int, int>, double>> edges;
         public void start()
         {
             getDistincitColors = new Distictit_Colors(ImageMatrix);
             //Get The Distincit Colors
-            List<RGBPixel> colors = getDistincitColors.getDistincitColors();
+            colors = getDistincitColors.getDistincitColors();
             //An Object To Calculate The Minimum Spanning Tree
             Prim prim = new Prim();
             //List To Save The Edges The Resulting Minimum Spanning Tree
-            List<KeyValuePair<KeyValuePair<int, int>, double>> edges = new List<KeyValuePair<KeyValuePair<int, int>, double>>();
+            edges = new List<KeyValuePair<KeyValuePair<int, int>, double>>();
             //The Total Sum Of The MST
             double sum = prim.getMst(ref edges, colors.Count, colors);
+            
             //Display The # Distinct Colors In The Width's Text Box
             txtWidth.Text = (colors.Count - 1).ToString();
             //Display The Sum Of The MST In The Height's Text Box
@@ -50,8 +52,12 @@ namespace ImageQuantization
 
         private void btnGaussSmooth_Click(object sender, EventArgs e)
         {
+            int K = int.Parse(ClusterNumber.Text);
+            Cluster c = new Cluster(colors,ImageMatrix);
+            c.getClusters(edges, colors.Count, K);
+            ImageMatrix = c.replace();
             double sigma = double.Parse(txtGaussSigma.Text);
-            int maskSize = (int)nudMaskSize.Value ;
+            int maskSize = (int)nudMaskSize.Value;
             ImageMatrix = ImageOperations.GaussianFilter1D(ImageMatrix, maskSize, sigma);
             ImageOperations.DisplayImage(ImageMatrix, pictureBox2);
         }

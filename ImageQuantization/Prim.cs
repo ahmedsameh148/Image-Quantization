@@ -63,8 +63,10 @@ namespace ImageQuantization
                     }
                 }
                 if (child == 0) break;
+                edges.Add(new KeyValuePair<KeyValuePair<int, int>, double>(new KeyValuePair<int, int>(cur, child), mn));
                 cur = child;
             }
+            
             //Return The Total Weight Of The MST
             return minimumCost;
         }
