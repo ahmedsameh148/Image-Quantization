@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,27 +7,19 @@ namespace ImageQuantization
 {
     class Prim
     {
-        //Calculate the Power in O(log2(Power))
-        public long Power(long Base, long power)
-        {
-            if (power == 1) return Base;
-            if (power == 0) return 1;
-            long res = Power(Base, power / 2);
-            if (power % 2 == 1) return Base * res * res;
-            return res * res;
-        }
+       
 
         //Calculate The Distance Between Any 2 Colors
         public double calculateDistance(RGBPixel color1, RGBPixel color2)
         {
-            return Math.Sqrt(Power(Math.Abs(color1.red - color2.red), 2) + Power(Math.Abs(color1.green - color2.green), 2) + Power(color1.blue - color2.blue, 2));
+            return Math.Sqrt( ((color1.red - color2.red)* (color1.red - color2.red)) + ((color1.green - color2.green)*(color1.green - color2.green)) + ((color1.blue - color2.blue)* (color1.blue - color2.blue)));
         }
 
         //Calculate The Minimum Spanning Tree 
         public double getMst(ref List<KeyValuePair<KeyValuePair<int, int>, double>> edges, int D, List<RGBPixel> Colors)
         {
             //Priority Queue To Get The Minimum Distance Between Any 2 Nodes
-            PriorityQueue<PriorityQueueItem> Q = new PriorityQueue<PriorityQueueItem>();
+           // PriorityQueue<PriorityQueueItem> Q = new PriorityQueue<PriorityQueueItem>();
             //Save The Total Weight Of The Minimum Spanning Tree
             double minimumCost = 0;
             //Save The Weight Of Each Node
@@ -42,7 +34,7 @@ namespace ImageQuantization
             //Array To Know The Visited Nodes
             bool[] marked = new bool[D + 1];
             weights[1] = 0;
-            while (true)
+            while (cur<D)
             {
                 marked[cur] = true;
                 mn = 1000000000;
@@ -55,6 +47,7 @@ namespace ImageQuantization
                     {
                         //Calculate The Weight On The Edge Between The Current Vertix And His Child
                         double weight = calculateDistance(Colors[cur], Colors[i]);
+                        //double weight = 0;
                         //Check If I Pushed The Same Vertix With A Smaller Cost
                         if (weights[i] > weight)
                         {
