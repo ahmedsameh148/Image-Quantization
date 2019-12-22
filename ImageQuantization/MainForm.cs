@@ -29,7 +29,7 @@ namespace ImageQuantization
             edges = new List<KeyValuePair<KeyValuePair<int, int>, double>>();
             //The Total Sum Of The MST
             double sum = prim.getMst(ref edges, colors.Count, colors);
-            
+            MessageBox.Show(edges.Count.ToString());
             //Display The # Distinct Colors In The Width's Text Box
             txtWidth.Text = (colors.Count - 1).ToString();
             //Display The Sum Of The MST In The Height's Text Box

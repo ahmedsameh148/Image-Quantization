@@ -21,18 +21,24 @@ namespace ImageQuantization
             Colors = l;
             ImageMatrix = matrix;
         }
-        void Dfs(int node)
+        void Bfs(int node)
         {
-            vis[node] = true;
-            counter++;
-            guid[node] = curCluster;
-            sum1 += Colors[node].red;
-            sum2 += Colors[node].green;
-            sum3 += Colors[node].blue;
-
-            for (int i = 0; i < adjList[node].Count; i++)
+            Queue<int> q = new Queue<int>();
+            q.Enqueue(node);
+            while (q.Count > 0)
             {
-                if (!vis[adjList[node][i]]) Dfs(adjList[node][i]);
+                node = q.Dequeue();
+                vis[node] = true;
+                counter++;
+                guid[node] = curCluster;
+                sum1 += Colors[node].red;
+                sum2 += Colors[node].green;
+                sum3 += Colors[node].blue;
+
+                for (int i = 0; i < adjList[node].Count; i++)
+                {
+                    if (!vis[adjList[node][i]]) q.Enqueue(adjList[node][i]);
+                }
             }
         }
         public void getClusters(List<KeyValuePair<KeyValuePair<int, int>, double>> edges, int D, int K)
@@ -57,7 +63,7 @@ namespace ImageQuantization
                 if (!vis[j]) {
                     counter = 0;
                     sum1 = 0; sum2 = 0; sum3 = 0;
-                    Dfs(j);
+                    Bfs(j);
                     sum1 /= counter;
                     sum2 /= counter;
                     sum3 /= counter;
