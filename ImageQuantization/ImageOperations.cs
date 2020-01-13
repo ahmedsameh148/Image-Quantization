@@ -243,16 +243,6 @@ namespace ImageQuantization
 
             return Filtered;
         }
-
-        public long Power(long Base, long power)
-        {
-            if (power == 1) return Base;
-            if (power == 0) return 1;
-            long res = Power(Base, power / 2);
-            if (power % 2 == 1) return Base * res * res;
-            return res * res;
-        }
-
     }
     
 }
