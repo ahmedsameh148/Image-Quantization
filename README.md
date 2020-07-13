@@ -9,3 +9,4 @@ The idea of color quantization is to reduce the number of colors in a full resol
 
 ## screen shots :
 ![Capشششture](https://user-images.githubusercontent.com/47069606/85183101-e545a880-b28a-11ea-93e0-e3de5f2af926.PNG)
+![Capشششture](https://github.com/ahmedsameh148/Image-Quantization/blob/master/Capture.PNG?raw=true)
